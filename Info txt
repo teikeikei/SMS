@@ -1,0 +1,73 @@
+SMS: 
+Net core 6 back
+Cqrs -> entity framework -dapper
+Data access layer -> Redis - cache
+Rabit and q query
+
+Loging serilog
+
+2 module 
+1 administrare 1api import de produse din xml. Background service sincronizare date intre module 
+1 client facing - adaugă cos ceckout, details for order, billing 
+
+Back office asp net identity- pentru admin
+Client (front office) - cont gmail 
+
+- React native pentru mobile 
+
+Prima parte API - github repo
+
+------------------------------------
+
+- I - MODUL: 
+
+PRODUCTS  -> API endpoints 
+
+-> Product Catalog (backend)
+-> API
+-> GetProducts(paginare+ filtrare), ImportProduts(API+request background job), UpdateProducts(descriere pret), InsertProducts
+-> db - SQL SERVER (2tabele) -> CODE FIRST, ENTITY FRAMEWORK, 
+*tema: produse -> Detalii pentru produse (Produs, pret, descriere, specificatii, categorie(tabela separata))
+-> Rabbit&Q
+
+- II - MODUL
+
+-> OrderManagement (backend)
+-> API
+-> 
+-> SQL SERVER -> CODE FIRST, ENTITY FRAMEWORK, DAPPER? -> Order, OrderDetails-items
+->
+
+- III - MODUL
+
+->Shopping(client facing)
+->API plasare comenzi
+->GQL view istoric comenzi, catalog produse+ stok uri
+->API + GRAPH QL - REFOLOSESC RESTUL DB URILOR
+
+
+- IV - MODUL 
+
+-> Inventory Management (backend)
+-> SERVICE
+-> background service -> ori de cate ori se sterge/importa o lista de produse se face sincronizarea cu stockul disponibil pe baza ProductId
+-> SQL SERVER -> CODE FIRST, ENTITY FRAMEWORK, 
+-> Rabbit&Q
+
+--------------------------------------------
+
+Implementare:
+
+Creare in acceasi solutie 1API PRODUCT CATALOG - name-> APi.ProductCatalog  
+															1. code first entity framework
+															2. request modelss/ response models (dto)
+															3. domain models (model. mapp db)
+															4. validare request (attribut based validation)
+															5. app.db context
+															6. code first entity framework
+						  1API ORDER MANAGEMENT      -> APi.OrderManagemant,
+						  1GRAPH QL SHOPPING         -> GQL.Shop
+						  1API SHOPPING              -> APi.Shop    
+						  1API INVENTORY MANAGEMENT	 ->	SVC.InventoryManagement (worker service/process)
+						  
+	
