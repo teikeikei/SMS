@@ -1,8 +1,8 @@
-namespace Api.OrderManagement
+namespace Api.ProductCatalog
 {
-    public class WeatherForecast
+    public class Product
     {
-        public DateTime Date { get; set; }
+        public int Id { get; set; }
 
         public int TemperatureC { get; set; }
 
