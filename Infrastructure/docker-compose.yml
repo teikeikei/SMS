@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    ports:
+      - 1433:1433
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    volumes:
+      - mssql:/var/opt
+    restart: unless-stopped
+  
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: your_username
+      RABBITMQ_DEFAULT_PASS: your_password
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+ 
+  redis:
+    build:
+      context: .
+      dockerfile: ./redis.dockerfile
+    image: redis:standalone
+    container_name: redis
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    command: "redis-server /config/redis.conf"
+
+  smtp:
+    image: mailhog/mailhog:latest
+    container_name: smtp
+    ports:
+      - 1025:1025
+      - 8025:8025
+    restart: unless-stopped
+
+volumes:
+  mssql:
+  rabbitmq-data:
