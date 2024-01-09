@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace InventoryManagement.Controllers
+namespace Api.InventoryManagement.Controllers
 {
     [ApiController]
     [Route("[controller]")]

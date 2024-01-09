@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.ProductCatalog.Controllers
+namespace Api.IdentityProvider.Controllers
 {
     [ApiController]
     [Route("[controller]")]
