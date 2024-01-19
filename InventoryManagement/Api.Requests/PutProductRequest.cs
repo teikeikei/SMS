@@ -1,15 +1,15 @@
 using AutoMapper;
 using System.ComponentModel.DataAnnotations;
-using lib.InventoryManagement.DataLayer.Models;
+
 namespace InventoryManagement.Api.Requests
 {
-	public class PutProductRequestProfile : Profile
+    public class PutProductRequestProfile : Profile
 	{
 		public PutProductRequestProfile()
 		{
-			CreateMap<PutProductRequest, Product>()
-				.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-				.ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity));
+			//CreateMap<PutProductRequest, Product>()
+			//	.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+			//	.ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity));
 		}
 	}
 
